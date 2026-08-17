@@ -32,12 +32,20 @@ export default function Header() {
   }, [mobileOpen]);
 
   const solid = scrolled || mobileOpen;
+  // backdrop-blur (a CSS "filter") on this element would create a new
+  // containing block for any fixed-position descendant, which breaks the
+  // full-screen mobile menu below (nested inside <header>) by making it
+  // position itself relative to this 76px bar instead of the viewport.
+  // Only apply the blur when the menu itself isn't open.
+  const showBlur = scrolled && !mobileOpen;
 
   return (
     <header
       className={`sticky top-0 z-50 w-full transition-all duration-300 ${
         solid
-          ? "bg-white/90 shadow-[0_1px_0_0_rgba(11,15,42,0.06)] backdrop-blur-md"
+          ? `bg-white/90 shadow-[0_1px_0_0_rgba(11,15,42,0.06)] ${
+              showBlur ? "backdrop-blur-md" : ""
+            }`
           : "bg-transparent"
       }`}
     >
