@@ -87,33 +87,33 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile full-screen menu */}
-      <div
-        className={`fixed inset-0 top-[76px] z-40 flex flex-col bg-white bg-opacity-100 transition-all duration-300 lg:hidden ${
-          mobileOpen
-            ? "pointer-events-auto opacity-100"
-            : "pointer-events-none opacity-0"
-        }`}
-        style={{ backgroundColor: "#ffffff" }}
-      >
-        <nav
-          className="container-qlentra flex flex-1 flex-col gap-1 pt-6"
-          aria-label="Mobile"
+      {/* Mobile full-screen menu — only mounted in the DOM while open, so it
+          can never render in a partially-transparent in-between state. */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-x-0 bottom-0 top-[76px] z-40 flex flex-col overflow-y-auto bg-white lg:hidden"
+          style={{ backgroundColor: "#ffffff", opacity: 1 }}
         >
-          {navLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              className="border-b border-navy-800/8 py-4 text-lg font-semibold text-navy-800"
-            >
-              {link.label}
-            </Link>
-          ))}
-          <div className="mt-6">
-            <BookingCTA size="md" label="Book a Discovery Call" fullWidth />
-          </div>
-        </nav>
-      </div>
+          <nav
+            className="container-qlentra flex flex-1 flex-col gap-1 bg-white pt-6"
+            aria-label="Mobile"
+            style={{ backgroundColor: "#ffffff" }}
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="border-b border-navy-800/8 py-4 text-lg font-semibold text-navy-800"
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="mt-6 pb-8">
+              <BookingCTA size="md" label="Book a Discovery Call" fullWidth />
+            </div>
+          </nav>
+        </div>
+      )}
     </header>
   );
 }
