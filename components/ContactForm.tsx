@@ -65,6 +65,7 @@ export default function ContactForm() {
     {}
   );
   const [state, setState] = useState<FormState>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   function update<K extends keyof FormValues>(key: K, value: FormValues[K]) {
     setValues((prev) => ({ ...prev, [key]: value }));
@@ -106,13 +107,31 @@ export default function ContactForm() {
     if (!validate()) return;
 
     setState("submitting");
+    setErrorMessage(null);
     try {
-      // Wire this up to your form handler / API route / email service.
-      // Example: await fetch("/api/contact", { method: "POST", body: JSON.stringify(values) });
-      await new Promise((resolve) => setTimeout(resolve, 900));
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        setErrorMessage(
+          result?.error ||
+            "Something went wrong sending your message. Please try again."
+        );
+        setState("error");
+        return;
+      }
+
       setState("success");
       setValues(initialValues);
     } catch {
+      setErrorMessage(
+        "Something went wrong sending your message. Please check your connection and try again."
+      );
       setState("error");
     }
   }
@@ -346,9 +365,9 @@ export default function ContactForm() {
 
       {state === "error" && (
         <div className="mt-5 flex items-center gap-2 rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700">
-          <AlertCircle size={16} />
-          Something went wrong sending your message. Please try again or
-          email us directly.
+          <AlertCircle size={16} className="shrink-0" />
+          {errorMessage ||
+            "Something went wrong sending your message. Please try again or email us directly."}
         </div>
       )}
 

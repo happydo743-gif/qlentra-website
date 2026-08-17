@@ -79,6 +79,35 @@ npm run typecheck
    pilot page, contact page, footer flows — reads from this single value,
    as does the inline embed on the Contact page.
 
+## 8b. Configure the Contact Form (Resend)
+
+The Contact page form submits to `app/api/contact/route.ts`, a Next.js API
+route that emails the enquiry to `NEXT_PUBLIC_CONTACT_EMAIL` using
+[Resend](https://resend.com).
+
+1. Create a free Resend account at [resend.com](https://resend.com) (free
+   tier covers 3,000 emails/month, more than enough for a contact form).
+2. In the Resend dashboard, go to **API Keys → Create API Key** and copy
+   the key.
+3. Add it as `RESEND_API_KEY` in `.env.local` (dev) and in Vercel →
+   Project Settings → Environment Variables (production). **Do not**
+   prefix it with `NEXT_PUBLIC_` — it must stay server-side only.
+4. For quick testing, leave `CONTACT_FROM_EMAIL` as the default
+   `Qlentra Website <onboarding@resend.dev>` — Resend's shared test
+   sender works immediately with no setup, but can only deliver to the
+   email address on your Resend account while unverified.
+5. For production, go to Resend → **Domains → Add Domain**, add
+   `qlentracx.com` (or your real domain), and add the DNS records Resend
+   provides. Once verified, set `CONTACT_FROM_EMAIL` to something like
+   `Qlentra Website <no-reply@qlentracx.com>` so it can send to any
+   recipient, not just your own account email.
+6. Redeploy after adding/changing these environment variables.
+
+The API route validates all fields server-side (never trust client-side
+validation alone), rejects the request if the honeypot field is filled,
+and returns a clear error message surfaced directly in the form UI if
+sending fails for any reason.
+
 ## 9. Environment Variables — Exactly Where to Update Things
 
 All environment variables are defined in **`.env.example`** (template) and
@@ -91,6 +120,8 @@ single source of truth the rest of the site imports from.
 | `NEXT_PUBLIC_SITE_URL` | Final production domain (no trailing slash) | `lib/site-config.ts` → `siteConfig.url` → `app/layout.tsx` (metadata/OG), `app/sitemap.ts`, `app/robots.ts` |
 | `NEXT_PUBLIC_LINKEDIN_URL` | Official LinkedIn company page | `lib/site-config.ts` → `socialLinks` → `components/SocialLinks.tsx`, footer |
 | `NEXT_PUBLIC_CONTACT_EMAIL` | Public support email | `lib/site-config.ts` → `siteConfig.email` → Footer, Contact page, Privacy/Terms pages |
+| `RESEND_API_KEY` | Server-side secret for sending contact form emails | `app/api/contact/route.ts` |
+| `CONTACT_FROM_EMAIL` | The "from" address contact form emails are sent from | `app/api/contact/route.ts` |
 
 **For local development:** edit `.env.local` (already created).
 **For production:** add the same keys under Vercel → Project Settings →
@@ -163,6 +194,7 @@ app/
   robots.ts                Dynamic robots.txt
   loading.tsx              Route loading state
   globals.css              Tailwind base + design tokens
+  api/contact/route.ts    Contact form email delivery (Resend)
 
 components/
   Header.tsx, Footer.tsx, Hero.tsx
@@ -211,10 +243,9 @@ public/
    live (Section 6 & 9).
 3. **Contact email** — confirm `support@qlentracx.com` is the correct,
    monitored inbox, or update `NEXT_PUBLIC_CONTACT_EMAIL`.
-4. **Contact form backend** — `components/ContactForm.tsx` currently
-   simulates a submit (see the `TODO`-style comment inside
-   `handleSubmit`). Wire it to a real endpoint (API route, form service,
-   or CRM webhook) before go-live.
+4. **Contact form backend** — now wired to `app/api/contact/route.ts`,
+   which emails enquiries via Resend. You just need to add a
+   `RESEND_API_KEY` (see Section 8b) — no further code changes required.
 5. **Legal review** — both `app/privacy/page.tsx` and `app/terms/page.tsx`
    display an on-page notice that they are templates requiring review by
    qualified legal counsel, including the governing-law placeholder in
