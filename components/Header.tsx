@@ -89,11 +89,12 @@ export default function Header() {
 
       {/* Mobile full-screen menu */}
       <div
-        className={`fixed inset-0 top-[76px] z-40 flex flex-col bg-white transition-all duration-300 lg:hidden ${
+        className={`fixed inset-0 top-[76px] z-40 flex flex-col bg-white bg-opacity-100 transition-all duration-300 lg:hidden ${
           mobileOpen
             ? "pointer-events-auto opacity-100"
             : "pointer-events-none opacity-0"
         }`}
+        style={{ backgroundColor: "#ffffff" }}
       >
         <nav
           className="container-qlentra flex flex-1 flex-col gap-1 pt-6"
