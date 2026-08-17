@@ -59,10 +59,10 @@ export default function TermsPage() {
               <p>
                 The Qlentra name, logo, brand assets, and all website
                 content, including text, graphics, and design, are the
-                property of Qlentra or its licensors and are protected by
-                applicable intellectual property laws. Nothing on this
-                website should be construed as granting any license or
-                right to use any trademark or brand asset without prior
+                property of {siteConfig.legalName} or its licensors and are
+                protected by applicable intellectual property laws. Nothing
+                on this website should be construed as granting any license
+                or right to use any trademark or brand asset without prior
                 written permission.
               </p>
             </PolicySection>
@@ -140,9 +140,9 @@ export default function TermsPage() {
 
             <PolicySection title="11. Governing Law">
               <p>
-                These Terms of Use are governed by the laws of [governing
-                law / jurisdiction to be inserted], without regard to
-                conflict-of-law principles.
+                These Terms of Use are governed by the laws of the State of
+                Florida, United States, without regard to conflict-of-law
+                principles.
               </p>
             </PolicySection>
 

@@ -5,7 +5,7 @@
 
 export const siteConfig = {
   name: "Qlentra",
-  legalName: "Qlentra",
+  legalName: "Qlentra CX",
   descriptor: "Sales, Retention & Customer Experience Outsourcing",
   tagline: "Convert More. Retain Longer. Grow Smarter.",
   shortDescription:
