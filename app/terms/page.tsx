@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { AlertTriangle } from "lucide-react";
 import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -23,17 +22,6 @@ export default function TermsPage() {
           <p className="mt-3 text-sm text-navy-500">
             Last updated: {lastUpdated}
           </p>
-
-          <div className="mt-6 flex items-start gap-3 rounded-xl border border-amber-200 bg-amber-50 p-4">
-            <AlertTriangle
-              size={20}
-              className="mt-0.5 shrink-0 text-amber-600"
-            />
-            <p className="text-sm leading-relaxed text-amber-800">
-              These Terms are provided as a website template and should be
-              reviewed by qualified legal counsel before publication.
-            </p>
-          </div>
 
           <div className="prose-qlentra mt-10 space-y-9">
             <PolicySection title="1. Acceptance of Terms">
