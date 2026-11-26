@@ -92,6 +92,22 @@ export default function PilotPage() {
                 Final scope and pricing depend on campaign complexity, call
                 volume, integrations, operating hours, and data volume.
               </p>
+              <div className="mt-6 rounded-xl border border-violet/30 bg-violet/5 p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.1em] text-violet">
+                  Founding Client Offer
+                </p>
+                <p className="mt-2 font-display text-2xl font-bold text-navy-800">
+                  $700{" "}
+                  <span className="text-sm font-medium text-navy-600">
+                    / pilot - first 2 clients only
+                  </span>
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-navy-600">
+                  Everything in the standard sprint, in return for permission
+                  to publish the real numbers as a case study plus a short
+                  named testimonial.
+                </p>
+              </div>
               <div className="mt-8 flex flex-col gap-3">
                 <Link href="/contact" className="btn-primary w-full">
                   Request a Pilot

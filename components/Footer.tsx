@@ -82,7 +82,7 @@ export default function Footer() {
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
           <p className="text-xs text-white/40">
-            © {year} {siteConfig.name}. All rights reserved.
+            © {year} {siteConfig.legalName}. All rights reserved.
           </p>
           <p className="text-xs text-white/40">
             Sales, Retention &amp; Customer Experience Outsourcing
