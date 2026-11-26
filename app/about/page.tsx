@@ -1,18 +1,10 @@
 // =============================================================
-// SAEED - BEFORE MERGING, fill every [BRACKETED] value with real
-// facts and delete this comment:
-//   [FOUNDER NAME]        - your full name as you want it public
-//   [FOUNDER TITLE]       - e.g. Founder & CEO
-//   [BACKGROUND SENTENCE] - 1 true sentence: years + field, e.g.
-//     "7 years running performance marketing for agencies and
-//     subscription businesses across the US and the Middle East"
-//   [WHY SENTENCE]        - 1 true sentence on the moment/reason
-//     you decided to build Qlentra
+// SAEED - BEFORE MERGING, fill the two [BRACKETED] values with
+// real facts and delete this comment:
 //   [ENTITY LEGAL NAME]   - the Florida entity's exact legal name
 //   [ENTITY ADDRESS]      - registered address (or agent address)
-//   [PHOTO: yes/no]       - if yes, add /public/founder.jpg and
-//     uncomment the image block below
-// Nothing else on this page invents facts.
+// Everything else on this page is company-only copy: no personal
+// names, no photos, no unverifiable claims.
 // =============================================================
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
@@ -77,38 +69,25 @@ export default function AboutPage() {
               title="Built to Make the Calls Nobody Had Time For"
             />
             <p className="text-lg leading-relaxed text-navy-700">
-              Qlentra was founded by [FOUNDER NAME], [FOUNDER TITLE], after
-              [BACKGROUND SENTENCE]. Again and again, the same pattern
-              showed up: businesses investing real money to win customers,
-              then losing them quietly - leads nobody called back,
-              cancellations processed without a save conversation, failed
-              payments that got automated emails and zero phone calls, and
-              past customers nobody contacted again.
+              Qlentra was built around a pattern that repeats across
+              membership and recurring-service businesses: real money goes
+              into winning customers, then revenue leaks out quietly -
+              leads nobody called back, cancellations processed without a
+              save conversation, failed payments that got automated emails
+              and zero phone calls, and past customers nobody contacted
+              again.
             </p>
             <p className="text-lg leading-relaxed text-navy-700">
-              [WHY SENTENCE]
+              The fix is not more automation. It is trained people making
+              the right calls at the right moments, with a clear offer, a
+              calm tone, and a record of every outcome.
             </p>
             <p className="text-lg leading-relaxed text-navy-700">
-              Qlentra is the answer: a managed desk of trained human
+              That is what Qlentra is: a managed desk of trained human
               agents - not software, not bots - who make exactly those
               calls for membership and recurring-service businesses. Every
               call recorded, every outcome in a daily report.
             </p>
-            {/* [PHOTO: yes/no] - if yes, uncomment and add /public/founder.jpg
-            <div className="flex items-center gap-4 pt-4">
-              <img
-                src="/founder.jpg"
-                alt="[FOUNDER NAME], [FOUNDER TITLE] of Qlentra"
-                className="h-16 w-16 rounded-full object-cover"
-              />
-              <div>
-                <p className="text-base font-semibold text-navy-800">
-                  [FOUNDER NAME]
-                </p>
-                <p className="text-sm text-navy-500">[FOUNDER TITLE]</p>
-              </div>
-            </div>
-            */}
           </div>
         </div>
       </section>
@@ -153,6 +132,12 @@ export default function AboutPage() {
                   Registered
                 </dt>
                 <dd>Florida, United States - [ENTITY ADDRESS]</dd>
+              </div>
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
+                <dt className="w-40 shrink-0 font-semibold text-navy-800">
+                  Team
+                </dt>
+                <dd>A team of Egyptian and American specialists.</dd>
               </div>
               <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
                 <dt className="w-40 shrink-0 font-semibold text-navy-800">
