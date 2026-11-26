@@ -84,15 +84,18 @@ export default function Header() {
           <BookingCTA size="sm" label="Book a Discovery Call" />
         </div>
 
-        <button
-          type="button"
-          className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full text-navy-800 lg:hidden"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((v) => !v)}
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="flex items-center gap-3 lg:hidden">
+          <BookingCTA size="sm" label="Book" />
+          <button
+            type="button"
+            className="relative z-10 flex h-10 w-10 items-center justify-center rounded-full text-navy-800"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((v) => !v)}
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile full-screen menu — only mounted in the DOM while open, so it
