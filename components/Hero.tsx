@@ -37,6 +37,11 @@ export default function Hero() {
             businesses.
           </p>
 
+          <p className="mt-3 text-sm font-medium text-aqua">
+            Built for car wash memberships, cleaning and recurring home
+            services.
+          </p>
+
           <p className="mt-4 max-w-xl text-sm leading-relaxed text-white/55">
             We combine trained human agents, structured CRM workflows, call
             recording, quality assurance, and measurable reporting to help
