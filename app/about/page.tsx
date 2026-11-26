@@ -1,12 +1,29 @@
+// =============================================================
+// SAEED - BEFORE MERGING, fill every [BRACKETED] value with real
+// facts and delete this comment:
+//   [FOUNDER NAME]        - your full name as you want it public
+//   [FOUNDER TITLE]       - e.g. Founder & CEO
+//   [BACKGROUND SENTENCE] - 1 true sentence: years + field, e.g.
+//     "7 years running performance marketing for agencies and
+//     subscription businesses across the US and the Middle East"
+//   [WHY SENTENCE]        - 1 true sentence on the moment/reason
+//     you decided to build Qlentra
+//   [ENTITY LEGAL NAME]   - the Florida entity's exact legal name
+//   [ENTITY ADDRESS]      - registered address (or agent address)
+//   [PHOTO: yes/no]       - if yes, add /public/founder.jpg and
+//     uncomment the image block below
+// Nothing else on this page invents facts.
+// =============================================================
 import type { Metadata } from "next";
 import SectionHeading from "@/components/SectionHeading";
 import FinalCTA from "@/components/FinalCTA";
 import { Ear, MessagesSquare, LineChart } from "lucide-react";
+import { siteConfig } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Qlentra provides structured, managed customer operations designed to help recurring-service businesses convert more opportunities, retain more customers, and build more predictable recurring revenue.",
+    "Qlentra is a managed sales, retention, and customer experience desk founded to close the gap between automation and the customer conversations that save revenue.",
   alternates: { canonical: "/about" },
 };
 
@@ -54,18 +71,44 @@ export default function AboutPage() {
 
       <section className="section-padding bg-white">
         <div className="container-qlentra">
-          <div className="mx-auto max-w-3xl space-y-6 text-center">
+          <div className="mx-auto max-w-3xl space-y-6">
+            <SectionHeading
+              eyebrow="Our Story"
+              title="Built to Make the Calls Nobody Had Time For"
+            />
             <p className="text-lg leading-relaxed text-navy-700">
-              Qlentra was created to help recurring-service businesses close
-              the gap between automated communication and the customer
-              conversations that still require listening, objection
-              handling, reassurance, and human judgment.
+              Qlentra was founded by [FOUNDER NAME], [FOUNDER TITLE], after
+              [BACKGROUND SENTENCE]. Again and again, the same pattern
+              showed up: businesses investing real money to win customers,
+              then losing them quietly - leads nobody called back,
+              cancellations processed without a save conversation, failed
+              payments that got automated emails and zero phone calls, and
+              past customers nobody contacted again.
             </p>
             <p className="text-lg leading-relaxed text-navy-700">
-              We provide structured, managed customer operations designed to
-              help businesses convert more opportunities, retain more
-              customers, and build more predictable recurring revenue.
+              [WHY SENTENCE]
             </p>
+            <p className="text-lg leading-relaxed text-navy-700">
+              Qlentra is the answer: a managed desk of trained human
+              agents - not software, not bots - who make exactly those
+              calls for membership and recurring-service businesses. Every
+              call recorded, every outcome in a daily report.
+            </p>
+            {/* [PHOTO: yes/no] - if yes, uncomment and add /public/founder.jpg
+            <div className="flex items-center gap-4 pt-4">
+              <img
+                src="/founder.jpg"
+                alt="[FOUNDER NAME], [FOUNDER TITLE] of Qlentra"
+                className="h-16 w-16 rounded-full object-cover"
+              />
+              <div>
+                <p className="text-base font-semibold text-navy-800">
+                  [FOUNDER NAME]
+                </p>
+                <p className="text-sm text-navy-500">[FOUNDER TITLE]</p>
+              </div>
+            </div>
+            */}
           </div>
         </div>
       </section>
@@ -90,6 +133,50 @@ export default function AboutPage() {
                 </p>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section-padding bg-white">
+        <div className="container-qlentra">
+          <div className="mx-auto max-w-3xl">
+            <SectionHeading eyebrow="Company Details" title="Who You Are Working With" />
+            <dl className="mt-10 space-y-4 text-sm leading-relaxed text-navy-700">
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
+                <dt className="w-40 shrink-0 font-semibold text-navy-800">
+                  Legal entity
+                </dt>
+                <dd>[ENTITY LEGAL NAME]</dd>
+              </div>
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
+                <dt className="w-40 shrink-0 font-semibold text-navy-800">
+                  Registered
+                </dt>
+                <dd>Florida, United States - [ENTITY ADDRESS]</dd>
+              </div>
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
+                <dt className="w-40 shrink-0 font-semibold text-navy-800">
+                  Operations
+                </dt>
+                <dd>
+                  Remote-first managed team serving US businesses on US
+                  hours and US local numbers.
+                </dd>
+              </div>
+              <div className="flex flex-col gap-1 sm:flex-row sm:gap-4">
+                <dt className="w-40 shrink-0 font-semibold text-navy-800">
+                  Contact
+                </dt>
+                <dd>
+                  <a
+                    href={`mailto:${siteConfig.email}`}
+                    className="font-medium text-violet hover:underline"
+                  >
+                    {siteConfig.email}
+                  </a>
+                </dd>
+              </div>
+            </dl>
           </div>
         </div>
       </section>
